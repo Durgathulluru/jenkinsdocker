@@ -4,17 +4,12 @@ FROM node:14
 # Set the working directory in the container to /app
 WORKDIR /app
 
-# Copy package.json and package-lock.json to the working directory
-COPY app.json ./
-
-# Install the application dependencies
-RUN npm install
-
-# Copy the rest of the application code to the working directory
-COPY . .
+# Copy the application file to the working directory
+COPY app.js .
 
 # Make port 8080 available outside the container
 EXPOSE 8080
 
 # Run the application when the container launches
-CMD ["npm", "start"]
+CMD ["node", "app.js"]
+
