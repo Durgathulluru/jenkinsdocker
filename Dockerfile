@@ -1,8 +1,6 @@
-from ubuntu20:04
-workdir /usr/src/app
-run apt-get update && apt-get install -y  nginx
-copy Read.me .
-expose 80
-cmd ["nginx", "-g", "daemon off;"]
-
-
+FROM node:latest
+WORKDIR /usr/src/app
+COPY nodeapp/* /
+RUN npm install
+EXPOSE 3000
+CMD [ "npm","start" ]
